@@ -78,7 +78,7 @@ func text(input :String) -> (SpanElement?, String) {
 }
 
 func link(input :String) -> (SpanElement?, String) {
-    let (captures, advance) = input.capture(/"^\\[(.*)\\]\\((.*)\\)"/)
+    let (captures, advance) = input.capture(/"^\\[(.+?)\\]\\((.+?)\\)"/)
     guard let l = captures.first where l.count == 2 else {
         return (nil, input)
     }
@@ -86,7 +86,7 @@ func link(input :String) -> (SpanElement?, String) {
 }
 
 func emphasis(input :String) -> (SpanElement?, String) {
-    let (captures, advance) = input.capture(/"^\\*(.*)\\*"/)
+    let (captures, advance) = input.capture(/"^\\*(.+?)\\*"/)
     guard let l = captures.first where l.count == 1 else {
         return (nil, input)
     }
@@ -94,7 +94,7 @@ func emphasis(input :String) -> (SpanElement?, String) {
 }
 
 func code(input :String) -> (SpanElement?, String) {
-    let (captures, advance) = input.capture(/"^`(.*)`"/)
+    let (captures, advance) = input.capture(/"^`(.+?)`"/)
     guard let l = captures.first where l.count == 1 else {
         return (nil, input)
     }
@@ -102,7 +102,7 @@ func code(input :String) -> (SpanElement?, String) {
 }
 
 func image(input :String) -> (SpanElement?, String) {
-    let (captures, advance) = input.capture(/"^!\\[(.+)\\]\\((\\S+)(?:\\s\"(.+)\")?\\)"/)
+    let (captures, advance) = input.capture(/"^!\\[(.+?)\\]\\((\\S+)(?:\\s\"(.+?)\")?\\)"/)
     guard let l = captures.first where l.count == 2 || l.count == 3 else {
         return (nil, input)
     }

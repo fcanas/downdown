@@ -23,6 +23,20 @@ class LineTests: XCTestCase {
         XCTAssertEqual(html(l), "This <em>is</em> a line")
     }
     
+    func testLineWithMultipleEmphasis() {
+        let (l, output) = line("This *is* a line with *emphasis*!")
+        XCTAssertEqual(l.content.count, 5)
+        XCTAssertEqual(output, "")
+        XCTAssertEqual(html(l), "This <em>is</em> a line with <em>emphasis</em>!")
+    }
+    
+    func testLineWithMultipleCode() {
+        let (l, output) = line("This `is` a line with `code`!")
+        XCTAssertEqual(l.content.count, 5)
+        XCTAssertEqual(output, "")
+        XCTAssertEqual(html(l), "This <code>is</code> a line with <code>code</code>!")
+    }
+    
     func testLineWithEmphasisCode() {
         let (l, output) = line("This *is* some `code`!")
         XCTAssertEqual(l.content.count, 5)
@@ -35,6 +49,13 @@ class LineTests: XCTestCase {
         XCTAssertEqual(l.content.count, 7)
         XCTAssertEqual(output, "")
         XCTAssertEqual(html(l), "This <em>is</em> a <a href=\"code.html\">link</a> to some <code>code</code>!")
+    }
+    
+    func testLineWithEmphasisCodeLinkImage() {
+        let (l, output) = line("This *is* a [link](code.html) to some ![sample code](code.png) `code`!")
+        XCTAssertEqual(l.content.count, 9)
+        XCTAssertEqual(output, "")
+        XCTAssertEqual(html(l), "This <em>is</em> a <a href=\"code.html\">link</a> to some <img alt=\"sample code\" src=\"code.png\"> <code>code</code>!")
     }
 }
 
