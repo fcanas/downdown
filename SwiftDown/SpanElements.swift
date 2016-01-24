@@ -33,8 +33,19 @@ func html(element :SpanElement) -> String {
 
 let elementParsers = [link, emphasis, code, image]
 
+func lines(input :String) -> [Line] {
+    var text = input
+    var output = Array<Line>()
+    repeat {
+        let (l, t) = line(text)
+        output.append(l)
+        text = t
+    } while text.characters.count > 0
+    return output
+}
+
 func line(input :String) -> (Line, String) {
-    let (captures, advance) = input.capture(/"^(.*)$"/)
+    let (captures, advance) = input.capture(/"^(.*)(?:\\n|$)"/)
     guard let l = captures.first where l.count == 1 else {
         return (Line(content:[]), input)
     }
@@ -57,8 +68,10 @@ func line(input :String) -> (Line, String) {
         if currentText == nil {
             currentText = ""
         }
-        currentText?.append(remainder.characters.first!)
-        remainder = remainder.substringFromIndex(remainder.startIndex.advancedBy(1))
+        if let nextCharacter = remainder.characters.first {
+            currentText?.append(nextCharacter)
+            remainder = remainder.substringFromIndex(remainder.startIndex.advancedBy(1))
+        }
     }
     if let t = currentText {
         elements.append(SpanElement.Text(content: t))

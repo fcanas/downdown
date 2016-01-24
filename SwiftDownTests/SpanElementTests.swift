@@ -16,6 +16,11 @@ class LineTests: XCTestCase {
         XCTAssertEqual(l.content.count, 1)
     }
     
+    func testBasicMultipleLine() {
+        let l = lines("This is a line\nAnd so is this")
+        XCTAssertEqual(l.count, 2)
+    }
+    
     func testLineWithEmphasis() {
         let (l, output) = line("This *is* a line")
         XCTAssertEqual(l.content.count, 3)
@@ -28,6 +33,13 @@ class LineTests: XCTestCase {
         XCTAssertEqual(l.content.count, 5)
         XCTAssertEqual(output, "")
         XCTAssertEqual(html(l), "This <em>is</em> a line with <em>emphasis</em>!")
+    }
+    
+    func testLineWithTrailingEmphasis() {
+        let (l, output) = line("This is a line with trailing *emphasis*")
+        XCTAssertEqual(l.content.count, 3)
+        XCTAssertEqual(output, "")
+        XCTAssertEqual(html(l), "This is a line with trailing <em>emphasis</em>")
     }
     
     func testLineWithMultipleCode() {
