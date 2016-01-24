@@ -54,6 +54,8 @@ func html(element :BlockElement) -> String {
         return lines.map(html).joinWithSeparator("\n")
     case .Header(let level, let content):
         return "<h\(level)>" + html(content) + "</h\(level)>"
+    case .HorizontalRule:
+        return "<hr />"
     default:
         return ""
     }
@@ -66,4 +68,12 @@ func header(input :String) -> (BlockElement?, String) {
     }
     let (headerContent, _) = line(l[1])
     return (BlockElement.Header(level: l[0].characters.count, content: headerContent), input.substringFromIndex(input.startIndex.advancedBy(advance)))
+}
+
+func horizontalRule(input :String) -> (BlockElement?, String) {
+    let (captures, advance) = input.capture(/"^([-\\*_]\\s?){3,}$"/)
+    guard captures.first != nil else {
+        return (nil, input)
+    }
+    return (BlockElement.HorizontalRule, input.substringFromIndex(input.startIndex.advancedBy(advance)))
 }
