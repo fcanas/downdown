@@ -13,6 +13,7 @@
 		E7C5B5921C4D9C0500BEC3F3 /* RegularExpressions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5B5901C4D85F100BEC3F3 /* RegularExpressions.swift */; };
 		E7C5B5941C4DC95F00BEC3F3 /* SpanElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5B5931C4DC95F00BEC3F3 /* SpanElementTests.swift */; };
 		E7C5B5961C4DD09A00BEC3F3 /* SpanElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5B5951C4DD09A00BEC3F3 /* SpanElements.swift */; };
+		E7CC48501C4F35D800E35BDC /* BlockElementTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7CC484F1C4F35D800E35BDC /* BlockElementTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +36,7 @@
 		E7C5B5901C4D85F100BEC3F3 /* RegularExpressions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RegularExpressions.swift; path = SwiftDown/RegularExpressions.swift; sourceTree = SOURCE_ROOT; };
 		E7C5B5931C4DC95F00BEC3F3 /* SpanElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpanElementTests.swift; sourceTree = "<group>"; };
 		E7C5B5951C4DD09A00BEC3F3 /* SpanElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpanElements.swift; sourceTree = "<group>"; };
+		E7CC484F1C4F35D800E35BDC /* BlockElementTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockElementTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				E7C5B5851C4D7E0300BEC3F3 /* Info.plist */,
 				E7C5B5931C4DC95F00BEC3F3 /* SpanElementTests.swift */,
+				E7CC484F1C4F35D800E35BDC /* BlockElementTests.swift */,
 			);
 			path = SwiftDownTests;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7C5B5941C4DC95F00BEC3F3 /* SpanElementTests.swift in Sources */,
+				E7CC48501C4F35D800E35BDC /* BlockElementTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
