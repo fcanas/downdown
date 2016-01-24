@@ -19,6 +19,24 @@ class HeaderTests: XCTestCase {
 
         let (h3, _) = header("### this is a header")
         XCTAssertEqual(h3.map(html)!, "<h3>this is a header</h3>")
+        
+        let (h4, _) = header("#### this is a header")
+        XCTAssertEqual(h4.map(html)!, "<h4>this is a header</h4>")
+        
+        let (h5, _) = header("##### this is a header")
+        XCTAssertEqual(h5.map(html)!, "<h5>this is a header</h5>")
+        
+        let (h6, _) = header("###### this is a header")
+        XCTAssertEqual(h6.map(html)!, "<h6>this is a header</h6>")
+        
+        // headers only go up to level 6
+        // While maybe not cannonical (or specified) max out at h6
+        
+        let (h7, _) = header("####### this is a header")
+        XCTAssertEqual(h7.map(html)!, "<h6>this is a header</h6>")
+        
+        let (h8, _) = header("######## this is a header")
+        XCTAssertEqual(h8.map(html)!, "<h6>this is a header</h6>")
     }
     
     func testFormattingInsideHeader() {

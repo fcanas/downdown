@@ -62,7 +62,7 @@ func html(element :BlockElement) -> String {
 }
 
 func header(input :String) -> (BlockElement?, String) {
-    let (captures, advance) = input.capture(/"(#+)\\s(.*)"/)
+    let (captures, advance) = input.capture(/"(#{1,6})\\s(.*)"/)
     guard let l = captures.first where l.count == 2 else {
         return (nil, input)
     }
