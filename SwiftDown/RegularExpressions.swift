@@ -14,12 +14,16 @@ prefix operator / { }
 postfix operator / { }
 postfix func / (pattern: String) -> () -> NSRegularExpression {
     return {
-        try! NSRegularExpression(pattern: pattern, options: NSRegularExpressionOptions())
+        RegEx(pattern)
     }
 }
 
 prefix func / (regexgen: () -> NSRegularExpression) -> NSRegularExpression {
     return regexgen()
+}
+
+func RegEx(pattern: String, options: NSRegularExpressionOptions = NSRegularExpressionOptions()) -> NSRegularExpression {
+    return try! NSRegularExpression(pattern: pattern, options: options)
 }
 
 extension String {

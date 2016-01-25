@@ -51,7 +51,7 @@ func html(elements :[BlockElement]) -> String {
 func html(element :BlockElement) -> String {
     switch element {
     case .Paragraph(let lines):
-        return lines.map(html).joinWithSeparator("\n")
+        return "<p>" + lines.map(html).joinWithSeparator("\n") + "</p>"
     case .Header(let level, let content):
         return "<h\(level)>" + html(content) + "</h\(level)>"
     case .HorizontalRule:
@@ -59,6 +59,15 @@ func html(element :BlockElement) -> String {
     default:
         return ""
     }
+}
+
+func paragraph(input :String) -> (BlockElement?, String) {
+    let (captures, advance) = input.capture(RegEx("^(.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
+    guard captures.count > 0 else {
+        return (nil, input)
+    }
+    let l = captures.first!.flatMap(lines)
+    return (.Paragraph(l), input.substringFromIndex(input.startIndex.advancedBy(advance)))
 }
 
 func header(input :String) -> (BlockElement?, String) {

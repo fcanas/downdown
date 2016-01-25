@@ -92,3 +92,22 @@ class HorizontalRuleTests: XCTestCase {
         XCTAssertNil(hr2)
     }
 }
+
+class Paragraph: XCTestCase {
+    
+    func testParagraph() {
+        let (p, _) = paragraph("This is\na paragraph\nwith words.\n\n")
+        XCTAssertEqual(p.map(html)!, "<p>This is\na paragraph\nwith words.</p>")
+    }
+    
+    func testParagraphWithSpaces() {
+        let (p, _) = paragraph("This is\na paragraph\nwith words.\n  \t\n")
+        XCTAssertEqual(p.map(html)!, "<p>This is\na paragraph\nwith words.</p>")
+    }
+
+    func testParagraphWithSpanFormatting() {
+        let (p, _) = paragraph("This is\na [paragraph](paragraph.html)\nwith *formatting*.\n\n")
+        XCTAssertEqual(p.map(html)!, "<p>This is\na <a href=\"paragraph.html\">paragraph</a>\nwith <em>formatting</em>.</p>")
+    }
+    
+}
