@@ -86,7 +86,8 @@ func blockQuote(input :String) -> (BlockElement?, String) {
     guard captures.count > 0 else {
         return (nil, input)
     }
-    let l = captures.first!.flatMap(lines)
+    let strippedBrackets = captures.first!.first!.replace(RegEx("^ *> ?", options: [.AnchorsMatchLines]), template: "")
+    let l = lines(strippedBrackets)
     return (.BlockQuote(.Paragraph(l)), input.substringFromIndex(input.startIndex.advancedBy(advance)))
 }
 

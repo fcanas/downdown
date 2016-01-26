@@ -51,4 +51,8 @@ extension String {
             return captureGroups
         }, advance)
     }
+    
+    func replace(regex: NSRegularExpression, template: String) -> String {
+        return regex.stringByReplacingMatchesInString(self, options: NSMatchingOptions(), range: fullRange, withTemplate: template)
+    }
 }

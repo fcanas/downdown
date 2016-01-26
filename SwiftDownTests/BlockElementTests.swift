@@ -129,4 +129,19 @@ class BlockquoteTests: XCTestCase {
         XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na <a href=\"paragraph.html\">paragraph</a>\nwith <em>formatting</em>.</p></blockquote>")
     }
     
+    func testBlockQuoteWithArrows() {
+        let (p, _) = blockQuote("> This is\n> a paragraph\n> with words.\n\n")
+        XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na paragraph\nwith words.</p></blockquote>")
+    }
+    
+    func testBlockQuoteWithSpacesWithArrows() {
+        let (p, _) = blockQuote("> This is\n> a paragraph\n> with words.\n  \t\n")
+        XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na paragraph\nwith words.</p></blockquote>")
+    }
+    
+    func testBlockQuoteWithSpanFormattingWithArrows() {
+        let (p, _) = blockQuote("> This is\n> a [paragraph](paragraph.html)\n> with *formatting*.\n\n")
+        XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na <a href=\"paragraph.html\">paragraph</a>\nwith <em>formatting</em>.</p></blockquote>")
+    }
+    
 }
