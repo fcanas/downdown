@@ -13,10 +13,10 @@ class HeaderTests: XCTestCase {
     func testLevels() {
         let (h1, _) = header("# this is a header")
         XCTAssertEqual(h1.map(html)!, "<h1>this is a header</h1>")
-
+        
         let (h2, _) = header("## this is a header")
         XCTAssertEqual(h2.map(html)!, "<h2>this is a header</h2>")
-
+        
         let (h3, _) = header("### this is a header")
         XCTAssertEqual(h3.map(html)!, "<h3>this is a header</h3>")
         
@@ -54,14 +54,14 @@ class HorizontalRuleTests: XCTestCase {
         
         let (hr1, _) = horizontalRule("---")
         XCTAssertEqual(hr1.map(html)!, "<hr />")
-
+        
         // Underscore
         let (hr2, _) = horizontalRule("________")
         XCTAssertEqual(hr2.map(html)!, "<hr />")
         
         let (hr3, _) = horizontalRule("___")
         XCTAssertEqual(hr3.map(html)!, "<hr />")
-
+        
         // Asterisk
         let (hr4, _) = horizontalRule("*********")
         XCTAssertEqual(hr4.map(html)!, "<hr />")
@@ -76,7 +76,7 @@ class HorizontalRuleTests: XCTestCase {
         
         let (hr1, _) = horizontalRule("_ _ _")
         XCTAssertEqual(hr1.map(html)!, "<hr />")
-
+        
         let (hr2, _) = horizontalRule("* * *")
         XCTAssertEqual(hr2.map(html)!, "<hr />")
     }
@@ -104,7 +104,7 @@ class Paragraph: XCTestCase {
         let (p, _) = paragraph("This is\na paragraph\nwith words.\n  \t\n")
         XCTAssertEqual(p.map(html)!, "<p>This is\na paragraph\nwith words.</p>")
     }
-
+    
     func testParagraphWithSpanFormatting() {
         let (p, _) = paragraph("This is\na [paragraph](paragraph.html)\nwith *formatting*.\n\n")
         XCTAssertEqual(p.map(html)!, "<p>This is\na <a href=\"paragraph.html\">paragraph</a>\nwith <em>formatting</em>.</p>")
@@ -144,4 +144,11 @@ class BlockquoteTests: XCTestCase {
         XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na <a href=\"paragraph.html\">paragraph</a>\nwith <em>formatting</em>.</p></blockquote>")
     }
     
+}
+
+class ListTests: XCTestCase {
+    func testList() {
+        let (p, _) = list("* This is\n* a list\n* with *formatting*.\n\n")
+        XCTAssertEqual(p.map(html)!, "<ul><li>This is</li><li>a list</li><li>with <em>formatting</em>.</li></ul>")
+    }
 }

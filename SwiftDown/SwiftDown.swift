@@ -22,6 +22,17 @@ enum ListType {
     case Unordered
 }
 
+extension ListType {
+    func htmlTag() -> String {
+        switch self {
+        case .Ordered:
+            return "ol"
+        case .Unordered:
+            return "ul"
+        }
+    }
+}
+
 enum Either<TA, TB> {
     case A(TA)
     case B(TB)
@@ -31,7 +42,7 @@ indirect enum BlockElement {
     case Paragraph([Line])
     case Header(level :Int, content: Line)
     case BlockQuote(BlockElement)
-    case List(ListType, [Either<BlockElement, SpanElement>])
+    case List(ListType, [Either<BlockElement, Line>])
     case CodeBlock(String)
     case HorizontalRule
 }
@@ -42,6 +53,15 @@ enum SpanElement {
     case Emphasis(content: String)
     case Code(content: String)
     case Image(altText: String, url: NSURL, title: String?)
+}
+
+func html_(element :Either<BlockElement, Line>) -> String {
+    switch element {
+    case .A(let block):
+        return html(block)
+    case .B(let line):
+        return html(line)
+    }
 }
 
 func html(elements :[BlockElement]) -> String {
@@ -58,6 +78,8 @@ func html(element :BlockElement) -> String {
         return "<hr />"
     case .BlockQuote(let blockElement):
         return "<blockquote>\(html(blockElement))</blockquote>"
+    case .List(let type, let items):
+        return "<\(type.htmlTag())>" + items.map(html_).map({ "<li>\($0)</li>" }).joinWithSeparator("") + "</\(type.htmlTag())>"
     default:
         return ""
     }
@@ -89,6 +111,17 @@ func blockQuote(input :String) -> (BlockElement?, String) {
     let strippedBrackets = captures.first!.first!.replace(RegEx("^ *> ?", options: [.AnchorsMatchLines]), template: "")
     let l = lines(strippedBrackets)
     return (.BlockQuote(.Paragraph(l)), input.substringFromIndex(input.startIndex.advancedBy(advance)))
+}
+
+
+func list(input :String) -> (BlockElement?, String) {
+    let (captures, advance) = input.capture(RegEx("^\\* (.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
+    guard captures.count > 0 else {
+        return (nil, input)
+    }
+    let strippedBullets = captures.first!.first!.replace(RegEx("^ *\\* ?", options: [.AnchorsMatchLines]), template: "")
+    let listItems = lines(strippedBullets).map({ return Either<BlockElement, Line>.B($0) })
+    return (.List(.Unordered, listItems), input.substringFromIndex(input.startIndex.advancedBy(advance)))
 }
 
 func horizontalRule(input :String) -> (BlockElement?, String) {
