@@ -30,7 +30,7 @@ enum Either<TA, TB> {
 indirect enum BlockElement {
     case Paragraph([Line])
     case Header(level :Int, content: Line)
-    case Blockquote([Line])
+    case BlockQuote(BlockElement)
     case List(ListType, [Either<BlockElement, SpanElement>])
     case CodeBlock(String)
     case HorizontalRule
@@ -56,6 +56,8 @@ func html(element :BlockElement) -> String {
         return "<h\(level)>" + html(content) + "</h\(level)>"
     case .HorizontalRule:
         return "<hr />"
+    case .BlockQuote(let blockElement):
+        return "<blockquote>\(html(blockElement))</blockquote>"
     default:
         return ""
     }
@@ -77,6 +79,15 @@ func header(input :String) -> (BlockElement?, String) {
     }
     let (headerContent, _) = line(l[1])
     return (BlockElement.Header(level: l[0].characters.count, content: headerContent), input.substringFromIndex(input.startIndex.advancedBy(advance)))
+}
+
+func blockQuote(input :String) -> (BlockElement?, String) {
+    let (captures, advance) = input.capture(RegEx("^> (.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
+    guard captures.count > 0 else {
+        return (nil, input)
+    }
+    let l = captures.first!.flatMap(lines)
+    return (.BlockQuote(.Paragraph(l)), input.substringFromIndex(input.startIndex.advancedBy(advance)))
 }
 
 func horizontalRule(input :String) -> (BlockElement?, String) {

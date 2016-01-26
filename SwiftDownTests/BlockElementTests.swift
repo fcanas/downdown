@@ -111,3 +111,22 @@ class Paragraph: XCTestCase {
     }
     
 }
+
+class BlockquoteTests: XCTestCase {
+    
+    func testBlockQuote() {
+        let (p, _) = blockQuote("> This is\na paragraph\nwith words.\n\n")
+        XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na paragraph\nwith words.</p></blockquote>")
+    }
+    
+    func testBlockQuoteWithSpaces() {
+        let (p, _) = blockQuote("> This is\na paragraph\nwith words.\n  \t\n")
+        XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na paragraph\nwith words.</p></blockquote>")
+    }
+    
+    func testBlockQuoteWithSpanFormatting() {
+        let (p, _) = blockQuote("> This is\na [paragraph](paragraph.html)\nwith *formatting*.\n\n")
+        XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na <a href=\"paragraph.html\">paragraph</a>\nwith <em>formatting</em>.</p></blockquote>")
+    }
+    
+}
