@@ -150,7 +150,7 @@ func list(input :String) -> (BlockElement?, String) {
 }
 
 func horizontalRule(input :String) -> (BlockElement?, String) {
-    let (captures, advance) = input.capture(/"^([-\\*_]\\s?){3,}$"/)
+    let (captures, advance) = input.capture(/"^([-\\*_]\\s??){3,}[\n]*"/)
     guard captures.first != nil else {
         return (nil, input)
     }

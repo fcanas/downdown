@@ -101,6 +101,17 @@ class HorizontalRuleTests: XCTestCase {
         let (hr2, _) = horizontalRule("**")
         XCTAssertNil(hr2)
     }
+    
+    func testAcrossLines() {
+        let (hr0, _) = horizontalRule("--------\n\n")
+        XCTAssertEqual(hr0.map(html)!, "<hr />")
+    }
+    
+    func testAdvancement() {
+        let (hr0, remainder) = horizontalRule("--------\n\n")
+        XCTAssertEqual(hr0.map(html)!, "<hr />")
+        XCTAssertEqual(remainder, "")
+    }
 }
 
 class Paragraph: XCTestCase {
