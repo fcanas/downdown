@@ -55,6 +55,31 @@ enum SpanElement {
     case Image(altText: String, url: NSURL, title: String?)
 }
 
+let blockParsers = [header, blockQuote, list, horizontalRule, codeBlock, paragraph]
+
+public func markdown(input :String) -> String {
+    return html(blocks(input))
+}
+
+func blocks(input :String) -> [BlockElement] {
+    var text = input
+    var output = Array<BlockElement>()
+    repeat {
+        let currentText = text
+        for blockParser in blockParsers {
+            let (b, t) = blockParser(text)
+            if let b = b {
+                output.append(b)
+                text = t
+            }
+        }
+        if text == currentText {
+            text = currentText.substringFromIndex(input.startIndex.advancedBy(1))
+        }
+    } while text.characters.count > 0
+    return output
+}
+
 func html_(element :Either<BlockElement, Line>) -> String {
     switch element {
     case .A(let block):
@@ -137,5 +162,4 @@ func codeBlock(input :String) -> (BlockElement?, String) {
         return (nil, input)
     }
     return (BlockElement.CodeBlock(code.first!), input.substringFromIndex(input.startIndex.advancedBy(advance)))
-    
 }
