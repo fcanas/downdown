@@ -71,6 +71,7 @@ func blocks(input :String) -> [BlockElement] {
             if let b = b {
                 output.append(b)
                 text = t
+                break
             }
         }
         if text == currentText {
@@ -120,7 +121,7 @@ func paragraph(input :String) -> (BlockElement?, String) {
 }
 
 func header(input :String) -> (BlockElement?, String) {
-    let (captures, advance) = input.capture(/"(#{1,6})\\s(.*)"/)
+    let (captures, advance) = input.capture(/"^(#{1,6})\\s(.*)\n*"/)
     guard let l = captures.first where l.count == 2 else {
         return (nil, input)
     }

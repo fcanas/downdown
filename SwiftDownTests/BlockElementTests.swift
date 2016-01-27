@@ -30,18 +30,28 @@ class HeaderTests: XCTestCase {
         XCTAssertEqual(h6.map(html)!, "<h6>this is a header</h6>")
         
         // headers only go up to level 6
-        // While maybe not cannonical (or specified) max out at h6
         
         let (h7, _) = header("####### this is a header")
-        XCTAssertEqual(h7.map(html)!, "<h6>this is a header</h6>")
+        XCTAssertNil(h7)
         
         let (h8, _) = header("######## this is a header")
-        XCTAssertEqual(h8.map(html)!, "<h6>this is a header</h6>")
+        XCTAssertNil(h8)
     }
     
     func testFormattingInsideHeader() {
         let (h1, _) = header("# Header with *emphasis*")
         XCTAssertEqual(h1.map(html)!, "<h1>Header with <em>emphasis</em></h1>")
+    }
+    
+    func testStringAdvancing() {
+        let (h1, output) = header("# this is a header\n")
+        XCTAssertEqual(h1.map(html)!, "<h1>this is a header</h1>")
+        XCTAssertEqual(output, "")
+    }
+    
+    func testDontBeGreedy() {
+        let (h1, _) = header("# Title\n\n## Subtitle")
+        XCTAssertEqual(html(h1!), "<h1>Title</h1>")
     }
 }
 
@@ -160,3 +170,10 @@ class CodeBlockTests: XCTestCase {
     }
 }
 
+class BlockElementsTests: XCTest {
+    func testPriorities() {
+        let (h1, _) = header("# Title\n\n## Subtitle")
+        // It would be wrong to put "## Subtitle" into a paragrpah
+        XCTAssertEqual(html(h1!), "<h1>Title</h1>\n<h2>Subtitle</h2>")
+    }
+}
