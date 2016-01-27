@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9531"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="9531"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -670,30 +671,30 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Down" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="800" height="587"/>
+                        <rect key="frame" x="0.0" y="0.0" width="800" height="958"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <splitView arrangesAllSubviews="NO" dividerStyle="paneSplitter" vertical="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Gf1-sh-E21">
-                                <rect key="frame" x="0.0" y="0.0" width="800" height="587"/>
+                                <rect key="frame" x="0.0" y="300" width="800" height="658"/>
                                 <subviews>
                                     <customView id="gvJ-GE-nIA">
-                                        <rect key="frame" x="0.0" y="0.0" width="397" height="587"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="397" height="658"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9p7-kn-6Jn">
-                                                <rect key="frame" x="0.0" y="0.0" width="397" height="587"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="397" height="658"/>
                                                 <clipView key="contentView" id="SB3-Un-5yL">
-                                                    <rect key="frame" x="1" y="1" width="395" height="585"/>
+                                                    <rect key="frame" x="1" y="1" width="395" height="656"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textView importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="i13-o8-O8P">
-                                                            <rect key="frame" x="0.0" y="0.0" width="395" height="585"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="395" height="656"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <size key="minSize" width="395" height="585"/>
+                                                            <size key="minSize" width="395" height="656"/>
                                                             <size key="maxSize" width="463" height="10000000"/>
                                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <size key="minSize" width="395" height="585"/>
+                                                            <size key="minSize" width="395" height="656"/>
                                                             <size key="maxSize" width="463" height="10000000"/>
                                                             <connections>
                                                                 <outlet property="delegate" destination="XfG-lQ-9wD" id="SNf-iD-SPp"/>
@@ -707,7 +708,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="7yp-xi-hj3">
-                                                    <rect key="frame" x="380" y="1" width="16" height="585"/>
+                                                    <rect key="frame" x="380" y="1" width="16" height="656"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
@@ -720,23 +721,23 @@
                                         </constraints>
                                     </customView>
                                     <customView id="cSA-qN-xIb">
-                                        <rect key="frame" x="407" y="0.0" width="393" height="587"/>
+                                        <rect key="frame" x="407" y="0.0" width="393" height="658"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <subviews>
                                             <scrollView horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zA0-uO-8fq">
-                                                <rect key="frame" x="0.0" y="0.0" width="393" height="587"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="393" height="658"/>
                                                 <clipView key="contentView" id="XCN-6l-tca">
-                                                    <rect key="frame" x="1" y="1" width="391" height="585"/>
+                                                    <rect key="frame" x="1" y="1" width="391" height="656"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>
                                                         <textView editable="NO" importsGraphics="NO" findStyle="panel" continuousSpellChecking="YES" allowsUndo="YES" usesRuler="YES" usesFontPanel="YES" verticallyResizable="YES" allowsNonContiguousLayout="YES" quoteSubstitution="YES" dashSubstitution="YES" spellingCorrection="YES" smartInsertDelete="YES" id="siV-TP-4mz">
-                                                            <rect key="frame" x="0.0" y="0.0" width="391" height="585"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="391" height="656"/>
                                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <size key="minSize" width="391" height="585"/>
+                                                            <size key="minSize" width="391" height="656"/>
                                                             <size key="maxSize" width="463" height="10000000"/>
                                                             <color key="insertionPointColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                            <size key="minSize" width="391" height="585"/>
+                                                            <size key="minSize" width="391" height="656"/>
                                                             <size key="maxSize" width="463" height="10000000"/>
                                                         </textView>
                                                     </subviews>
@@ -747,7 +748,7 @@
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                                 <scroller key="verticalScroller" verticalHuggingPriority="750" doubleValue="1" horizontal="NO" id="on1-26-tqf">
-                                                    <rect key="frame" x="376" y="1" width="16" height="585"/>
+                                                    <rect key="frame" x="376" y="1" width="16" height="656"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                 </scroller>
                                             </scrollView>
@@ -765,22 +766,35 @@
                                     <real value="250"/>
                                 </holdingPriorities>
                             </splitView>
+                            <webView translatesAutoresizingMaskIntoConstraints="NO" id="p1R-r7-RpD">
+                                <rect key="frame" x="0.0" y="0.0" width="800" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="HaF-LP-kj2"/>
+                                </constraints>
+                                <webPreferences key="preferences" defaultFontSize="15" defaultFixedFontSize="15">
+                                    <nil key="identifier"/>
+                                </webPreferences>
+                            </webView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="Gf1-sh-E21" firstAttribute="top" secondItem="m2S-Jp-Qdl" secondAttribute="top" id="0Ln-cs-WLp"/>
+                            <constraint firstItem="p1R-r7-RpD" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="Ai5-6Q-NuT"/>
                             <constraint firstItem="Gf1-sh-E21" firstAttribute="leading" secondItem="m2S-Jp-Qdl" secondAttribute="leading" id="QPs-Z2-jWP"/>
-                            <constraint firstAttribute="bottom" secondItem="Gf1-sh-E21" secondAttribute="bottom" id="nc4-rc-AQn"/>
+                            <constraint firstAttribute="trailing" secondItem="p1R-r7-RpD" secondAttribute="trailing" id="Tyo-aw-4E5"/>
+                            <constraint firstItem="p1R-r7-RpD" firstAttribute="top" secondItem="Gf1-sh-E21" secondAttribute="bottom" id="rd9-D9-MbB"/>
                             <constraint firstAttribute="trailing" secondItem="Gf1-sh-E21" secondAttribute="trailing" id="teI-TU-REF"/>
+                            <constraint firstAttribute="bottom" secondItem="p1R-r7-RpD" secondAttribute="bottom" id="tju-cl-ByK"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="editableText" destination="i13-o8-O8P" id="c8Z-nV-rSc"/>
                         <outlet property="outputView" destination="siV-TP-4mz" id="3iv-79-0t4"/>
+                        <outlet property="webView" destination="p1R-r7-RpD" id="VMC-8r-WC2"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="821.5"/>
+            <point key="canvasLocation" x="75" y="1007"/>
         </scene>
     </scenes>
 </document>
