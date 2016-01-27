@@ -74,14 +74,14 @@ func html(element :BlockElement) -> String {
         return "<p>" + lines.map(html).joinWithSeparator("\n") + "</p>"
     case .Header(let level, let content):
         return "<h\(level)>" + html(content) + "</h\(level)>"
-    case .HorizontalRule:
-        return "<hr />"
     case .BlockQuote(let blockElement):
         return "<blockquote>\(html(blockElement))</blockquote>"
     case .List(let type, let items):
         return "<\(type.htmlTag())>" + items.map(html_).map({ "<li>\($0)</li>" }).joinWithSeparator("") + "</\(type.htmlTag())>"
-    default:
-        return ""
+    case .CodeBlock(let content):
+        return "<code>\(content)</code>"
+    case .HorizontalRule:
+        return "<hr />"
     }
 }
 
@@ -113,7 +113,6 @@ func blockQuote(input :String) -> (BlockElement?, String) {
     return (.BlockQuote(.Paragraph(l)), input.substringFromIndex(input.startIndex.advancedBy(advance)))
 }
 
-
 func list(input :String) -> (BlockElement?, String) {
     let (captures, advance) = input.capture(RegEx("^\\* (.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
     guard captures.count > 0 else {
@@ -130,4 +129,13 @@ func horizontalRule(input :String) -> (BlockElement?, String) {
         return (nil, input)
     }
     return (BlockElement.HorizontalRule, input.substringFromIndex(input.startIndex.advancedBy(advance)))
+}
+
+func codeBlock(input :String) -> (BlockElement?, String) {
+    let (captures, advance) = input.capture(RegEx("^```\n(.*?)\n```", options: [.DotMatchesLineSeparators]))
+    guard let code = captures.first else {
+        return (nil, input)
+    }
+    return (BlockElement.CodeBlock(code.first!), input.substringFromIndex(input.startIndex.advancedBy(advance)))
+    
 }

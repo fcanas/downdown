@@ -152,3 +152,11 @@ class ListTests: XCTestCase {
         XCTAssertEqual(p.map(html)!, "<ul><li>This is</li><li>a list</li><li>with <em>formatting</em>.</li></ul>")
     }
 }
+
+class CodeBlockTests: XCTestCase {
+    func testCodeBlock() {
+        let (c, _) = codeBlock("```\nThis is\nsome code\n   with things.\n```")
+        XCTAssertEqual(c.map(html)!, "<code>This is\nsome code\n   with things.</code>")
+    }
+}
+
