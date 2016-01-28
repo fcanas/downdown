@@ -112,12 +112,13 @@ func html(element :BlockElement) -> String {
 }
 
 func paragraph(input :String) -> (BlockElement?, String) {
-    let (captures, advance) = input.capture(RegEx("^(.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
-    guard captures.count > 0 else {
+    let (captures, _) = input.capture(RegEx("^(.+?)(\n\\s*\n)", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
+    guard let p = captures.first?.first, let total = captures.first else {
         return (nil, input)
     }
-    let l = captures.first!.flatMap(lines)
-    return (.Paragraph(l), input.substringFromIndex(input.startIndex.advancedBy(advance)))
+    let paragraph = lines(p)
+    let advance = total.joinWithSeparator("")
+    return (.Paragraph(paragraph), input.substringFromIndex(input.startIndex.advancedBy(advance.characters.count)))
 }
 
 func header(input :String) -> (BlockElement?, String) {
