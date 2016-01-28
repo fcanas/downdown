@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E74464BA1C59B7E3000A82DD /* BlockElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74464B91C59B7E3000A82DD /* BlockElements.swift */; };
+		E74464BC1C59B824000A82DD /* HTMLGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74464BB1C59B824000A82DD /* HTMLGeneration.swift */; };
 		E7C5B5781C4D7E0300BEC3F3 /* SwiftDown.h in Headers */ = {isa = PBXBuildFile; fileRef = E7C5B5771C4D7E0300BEC3F3 /* SwiftDown.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7C5B57F1C4D7E0300BEC3F3 /* SwiftDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7C5B5741C4D7E0300BEC3F3 /* SwiftDown.framework */; };
 		E7C5B58F1C4D7E1600BEC3F3 /* SwiftDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7C5B58E1C4D7E1600BEC3F3 /* SwiftDown.swift */; };
@@ -62,6 +64,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E74464B91C59B7E3000A82DD /* BlockElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockElements.swift; sourceTree = "<group>"; };
+		E74464BB1C59B824000A82DD /* HTMLGeneration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLGeneration.swift; sourceTree = "<group>"; };
 		E7C5B5741C4D7E0300BEC3F3 /* SwiftDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7C5B5771C4D7E0300BEC3F3 /* SwiftDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SwiftDown.h; sourceTree = "<group>"; };
 		E7C5B5791C4D7E0300BEC3F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -147,6 +151,8 @@
 				E7C5B5791C4D7E0300BEC3F3 /* Info.plist */,
 				E7C5B58E1C4D7E1600BEC3F3 /* SwiftDown.swift */,
 				E7C5B5951C4DD09A00BEC3F3 /* SpanElements.swift */,
+				E74464B91C59B7E3000A82DD /* BlockElements.swift */,
+				E74464BB1C59B824000A82DD /* HTMLGeneration.swift */,
 			);
 			path = SwiftDown;
 			sourceTree = "<group>";
@@ -353,8 +359,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E74464BC1C59B824000A82DD /* HTMLGeneration.swift in Sources */,
 				E7C5B5961C4DD09A00BEC3F3 /* SpanElements.swift in Sources */,
 				E7C5B5921C4D9C0500BEC3F3 /* RegularExpressions.swift in Sources */,
+				E74464BA1C59B7E3000A82DD /* BlockElements.swift in Sources */,
 				E7C5B58F1C4D7E1600BEC3F3 /* SwiftDown.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -653,6 +661,7 @@
 				E7E97F7B1C585C9200A5692F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7E97F7F1C585C9200A5692F /* Build configuration list for PBXNativeTarget "DownTests" */ = {
 			isa = XCConfigurationList;
@@ -661,6 +670,7 @@
 				E7E97F7D1C585C9200A5692F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

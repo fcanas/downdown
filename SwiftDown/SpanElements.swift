@@ -8,27 +8,6 @@
 
 import Foundation
 
-/// HTML Generation
-
-func html(line :Line) -> String {
-    return line.content.map(html).joinWithSeparator("")
-}
-
-func html(element :SpanElement) -> String {
-    switch element {
-    case .Link(let text, let url):
-        return "<a href=\"\(url.absoluteString)\">\(text)</a>"
-    case .Emphasis(let content):
-        return "<em>\(content)</em>"
-    case .Code(let content):
-        return "<code>\(content)</code>"
-    case .Image(let altText, let url, let title):
-        return "<img alt=\"\(altText)\" src=\"\(url)\"\(title != nil ? " title=\"" + title! + "\"" : "")>"
-    case .Text(let content):
-        return content
-    }
-}
-
 /// Line Parsing
 
 let elementParsers = [link, emphasis, code, image]
