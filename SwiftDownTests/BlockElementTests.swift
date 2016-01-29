@@ -171,6 +171,12 @@ class BlockquoteTests: XCTestCase {
         XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na <a href=\"paragraph.html\">paragraph</a>\nwith <em>formatting</em>.</p></blockquote>")
     }
     
+    func testDontBeGreedy() {
+        let (p, remainder) = blockQuote("> This is\n> a paragraph\n> with words.\n\n> And this is\na block quote that\nshouldn't be parsed.")
+        XCTAssertEqual(p.map(html)!, "<blockquote><p>This is\na paragraph\nwith words.</p></blockquote>")
+        XCTAssertEqual(remainder, "> And this is\na block quote that\nshouldn't be parsed.")
+    }
+    
 }
 
 class ListTests: XCTestCase {

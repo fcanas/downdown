@@ -40,16 +40,26 @@ extension String {
         return Range(start: start, end: start.advancedBy(range.length))
     }
     
-    func capture(regex: NSRegularExpression) -> (groups: [[String]], advance: Int) {
+    func capture(regex: NSRegularExpression, once: Bool = false) -> (groups: [[String]], advance: Int) {
         var advance = 0
-        return (regex.matchesInString(self, options: NSMatchingOptions(), range: fullRange).map { (r :NSTextCheckingResult) -> [String] in
+        let groupFromStringArray = { (r :NSTextCheckingResult) -> [String] in
             var captureGroups = Array<String>()
             for var i = 1; i < r.numberOfRanges; i++ {
-                captureGroups.append(substringWithRange(range(r.rangeAtIndex(i))))
+                captureGroups.append(self.substringWithRange(self.range(r.rangeAtIndex(i))))
             }
-            advance = substringWithRange(range(r.range)).characters.count
+            advance = self.substringWithRange(self.range(r.range)).characters.count
             return captureGroups
-        }, advance)
+        }
+        
+        if once {
+            var captures = Array<Array<String>>()
+            if let match = regex.firstMatchInString(self, options: NSMatchingOptions(), range: fullRange).map(groupFromStringArray) {
+                captures.append(match)
+            }
+            return (captures, advance)
+        }
+        
+        return (regex.matchesInString(self, options: NSMatchingOptions(), range: fullRange).map(groupFromStringArray), advance)
     }
     
     func replace(regex: NSRegularExpression, template: String) -> String {

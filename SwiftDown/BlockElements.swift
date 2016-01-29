@@ -31,13 +31,12 @@ func blocks(input :String) -> [BlockElement] {
 }
 
 func paragraph(input :String) -> (BlockElement?, String) {
-    let (captures, _) = input.capture(RegEx("^(.+?)(\n\\s*\n)", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
-    guard let p = captures.first?.first, let total = captures.first else {
+    let (captures, advance) = input.capture(RegEx("^(.+?)(\n\\s*\n)", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]), once: true)
+    guard let p = captures.first?.first else {
         return (nil, input)
     }
     let paragraph = lines(p)
-    let advance = total.joinWithSeparator("")
-    return (.Paragraph(paragraph), input.substringFromIndex(input.startIndex.advancedBy(advance.characters.count)))
+    return (.Paragraph(paragraph), input.substringFromIndex(input.startIndex.advancedBy(advance)))
 }
 
 func header(input :String) -> (BlockElement?, String) {
@@ -50,7 +49,7 @@ func header(input :String) -> (BlockElement?, String) {
 }
 
 func blockQuote(input :String) -> (BlockElement?, String) {
-    let (captures, advance) = input.capture(RegEx("^> (.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
+    let (captures, advance) = input.capture(RegEx("^> (.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]), once: true)
     guard captures.count > 0 else {
         return (nil, input)
     }
