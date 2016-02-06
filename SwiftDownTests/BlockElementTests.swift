@@ -177,6 +177,19 @@ class BlockquoteTests: XCTestCase {
         XCTAssertEqual(remainder, "> And this is\na block quote that\nshouldn't be parsed.")
     }
     
+    func testDontEatAFollowingParagraph() {
+        let (bq, remainder_) = blockQuote("> This is\n> a paragraph\n> with words.\n\nAnd this is\na paragraph that\nshouldn't be parsed.\n\n")
+        XCTAssertEqual(bq.map(html)!, "<blockquote><p>This is\na paragraph\nwith words.</p></blockquote>")
+        XCTAssertEqual(remainder_, "And this is\na paragraph that\nshouldn't be parsed.\n\n")
+    }
+    
+    func testMatchAtStartOfInput() {
+        let input = "This is\n a paragraph\n with words.\n\n> And this is\na block quote that\nshouldn't be parsed."
+        let (bq, remainder) = blockQuote(input)
+        XCTAssertEqual(input, remainder)
+        XCTAssertNil(bq)
+    }
+    
 }
 
 class ListTests: XCTestCase {

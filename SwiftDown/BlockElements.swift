@@ -8,7 +8,7 @@
 
 import Foundation
 
-let blockParsers = [header, blockQuote, list, horizontalRule, codeBlock, paragraph]
+let blockParsers = [header, list, horizontalRule, codeBlock, blockQuote, paragraph]
 
 func blocks(input :String) -> [BlockElement] {
     var text = input
@@ -31,7 +31,7 @@ func blocks(input :String) -> [BlockElement] {
 }
 
 func paragraph(input :String) -> (BlockElement?, String) {
-    let (captures, advance) = input.capture(RegEx("^(.+?)(\n\\s*\n)", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]), once: true)
+    let (captures, advance) = input.capture(RegEx("\\A(.+?)(\n\\s*\n)", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]), once: true)
     guard let p = captures.first?.first else {
         return (nil, input)
     }
@@ -49,7 +49,7 @@ func header(input :String) -> (BlockElement?, String) {
 }
 
 func blockQuote(input :String) -> (BlockElement?, String) {
-    let (captures, advance) = input.capture(RegEx("^> (.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]), once: true)
+    let (captures, advance) = input.capture(RegEx("\\A> (.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]), once: true)
     guard captures.count > 0 else {
         return (nil, input)
     }
