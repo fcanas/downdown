@@ -47,9 +47,22 @@ func line(input :String) -> (Line, String) {
         if currentText == nil {
             currentText = ""
         }
-        if let nextCharacter = remainder.characters.first {
+        let r = /"[\\*!\\[`]"/
+        let newRemainder :String
+        if let nextControlChar = r.firstMatchInString(remainder, options: NSMatchingOptions(), range: remainder.fullRange) {
+            let splitIndex = remainder.startIndex.advancedBy(nextControlChar.range.location)
+            currentText = currentText! + remainder.substringToIndex(splitIndex) ?? ""
+            newRemainder = remainder.substringFromIndex(splitIndex)
+        } else {
+            currentText = currentText! + remainder
+            newRemainder = ""
+        }
+        
+        if let nextCharacter = remainder.characters.first where remainder == newRemainder {
             currentText?.append(nextCharacter)
             remainder = remainder.substringFromIndex(remainder.startIndex.advancedBy(1))
+        } else {
+            remainder = newRemainder
         }
     }
     if let t = currentText {
