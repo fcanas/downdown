@@ -10,6 +10,12 @@ import Cocoa
 import SwiftDown
 import WebKit
 
+infix operator / { associativity left precedence 150 }
+
+func / (lhs :String, rhs :String) -> String {
+    return lhs + "\n" + rhs
+}
+
 class ViewController: NSViewController, NSTextViewDelegate {
     
     @IBOutlet var editableText :NSTextView!
@@ -20,30 +26,46 @@ class ViewController: NSViewController, NSTextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        editableText.string = "# Title\n\n" +
-            "## Subtitle\n\n" +
-            "* Things\n" +
-            "* Objects\n" +
-            "* Items\n\n" +
-            "-----\n\n" +
-            "*This* is a paragraph that\n" +
-            "can be spread across *multiple*\n" +
-            "lines  in the source file, but will\n" +
-            "get consolidated into a single\n" +
-            "paragraph. It can `also` contain\n" +
-            "[links](http://www.fabiancanas.com).\n\n" +
-            "```\n" +
-            "code does not get processed and *can* \n" +
-            "exhibit markdown stuff without processing.\n" +
+        let codeFont = NSFont(name: "Inconsolata", size: 14) ?? NSFont(name: "Courier New", size: 14)
+        
+        editableText.font = codeFont
+        outputView.font = codeFont
+        
+        editableText.string = "# Title" /
+            "" /
+            "## Subtitle" /
+            "" /
+            "* Things" /
+            "* Objects" /
+            "* Items" /
+            "" /
+            "-----" /
+            "" /
+            "*This* is a paragraph that" /
+            "can be spread across *multiple*" /
+            "lines  in the source file, but will" /
+            "get consolidated into a single" /
+            "paragraph. It can `also` contain" /
+            "[links](http://www.fabiancanas.com)." /
+            "" /
+            "```" /
+            "code does not get processed and *can* " /
+            "exhibit markdown stuff without processing." /
         "```"
+        
+        processText(editableText.string!)
     }
     
     func textDidChange(notification: NSNotification) {
-        if let textView = notification.object as? NSTextView {
-            let html = markdown(textView.string!)
-            outputView.string = html
-            webView.mainFrame.loadHTMLString(html, baseURL: NSURL(string:"/"))
+        if let text = (notification.object as? NSTextView)?.string {
+            processText(text)
         }
+    }
+    
+    func processText(text: String) {
+        let html = markdown(text)
+        outputView.string = html
+        webView.mainFrame.loadHTMLString(html, baseURL: NSURL(string:"/"))
     }
     
     override var representedObject: AnyObject? {
@@ -51,7 +73,5 @@ class ViewController: NSViewController, NSTextViewDelegate {
             // Update the view, if already loaded.
         }
     }
-    
-    
 }
 
