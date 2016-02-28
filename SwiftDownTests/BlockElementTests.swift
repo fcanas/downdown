@@ -202,7 +202,7 @@ class ListTests: XCTestCase {
 class CodeBlockTests: XCTestCase {
     func testCodeBlock() {
         let (c, _) = codeBlock("```\nThis is\nsome code\n   with things.\n```")
-        XCTAssertEqual(c.map(html)!, "<code>This is\nsome code\n   with things.</code>")
+        XCTAssertEqual(c.map(html)!, "<pre><code>This is\nsome code\n   with things.</code></pre>")
     }
 }
 

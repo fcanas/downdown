@@ -40,7 +40,7 @@ func html(element :BlockElement) -> String {
     case .List(let type, let items):
         return "<\(type.htmlTag())>" + items.map(html_).map({ "<li>\($0)</li>" }).joinWithSeparator("") + "</\(type.htmlTag())>"
     case .CodeBlock(let content):
-        return "<code>\(content)</code>"
+        return "<pre><code>\(content)</code></pre>"
     case .HorizontalRule:
         return "<hr />"
     }
