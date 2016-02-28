@@ -34,10 +34,10 @@ extension String {
     
     func range(range :NSRange) -> Range<String.Index> {
         guard range.location != NSNotFound else {
-            return Range(start: startIndex, end:startIndex)
+            return startIndex ..< startIndex
         }
         let start = startIndex.advancedBy(range.location)
-        return Range(start: start, end: start.advancedBy(range.length))
+        return start ..< start.advancedBy(range.length)
     }
     
     func capture(regex: NSRegularExpression, once: Bool = false) -> (groups: [[String]], advance: Int) {

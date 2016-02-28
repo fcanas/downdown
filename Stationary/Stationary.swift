@@ -11,7 +11,7 @@ import Foundation
 let openToken = "{{ "
 let closeToken = " }}"
 
-enum TemplateItem {
+public enum TemplateItem {
     /**
      * A Static template item is ready to be rendered
      */
@@ -55,7 +55,7 @@ func split(input :String, token :String) -> (Range<String.Index>, Range<String.I
     return split(input, token: token, range: input.startIndex ..< input.endIndex)
 }
 
-enum Template {
+public enum Template {
     /**
      * an .Incomplete template has an array of TemplateItem, one or more of
      * which is TemplateItem.Dyncamic
@@ -67,7 +67,7 @@ enum Template {
      */
     case Complete(Array<TemplateItem>)
     
-    init(templateString :String) {
+    public init(templateString :String) {
         var items = Array<TemplateItem>()
         
         var candidateRange = templateString.startIndex ..< templateString.endIndex
@@ -103,8 +103,9 @@ enum TemplateError : ErrorType {
     case CompleteTemplateContainsDynamicTemplateItem
 }
 
+// Template hydrating and rendering
 extension Template {
-    func hydrate(values :[String : String]) -> Template {
+    public func hydrate(values :[String : String]) -> Template {
         
         let hydratedItems :Array<TemplateItem>
         
@@ -140,7 +141,7 @@ extension Template {
         }
     }
     
-    func render() throws -> String {
+    public func render() throws -> String {
         switch self {
         case let .Complete(items):
             return try items.reduce(String(), combine: { (outputString, item) throws -> String in

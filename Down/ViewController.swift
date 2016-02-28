@@ -9,6 +9,7 @@
 import Cocoa
 import SwiftDown
 import WebKit
+import Stationary
 
 infix operator / { associativity left precedence 150 }
 
@@ -22,6 +23,7 @@ class ViewController: NSViewController, NSTextViewDelegate {
     @IBOutlet var outputView: NSTextView!
     @IBOutlet weak var webView: WebView!
     
+    let template = Template(templateString: "<html><body>{{ body }}</body></html>")
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +65,8 @@ class ViewController: NSViewController, NSTextViewDelegate {
     }
     
     func processText(text: String) {
-        let html = markdown(text)
+        let htmlBody = markdown(text)
+        let html = try? template.hydrate(["body":htmlBody]).render()
         outputView.string = html
         webView.mainFrame.loadHTMLString(html, baseURL: NSURL(string:"/"))
     }
