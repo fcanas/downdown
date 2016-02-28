@@ -44,7 +44,7 @@ extension String {
         var advance = 0
         let groupFromStringArray = { (r :NSTextCheckingResult) -> [String] in
             var captureGroups = Array<String>()
-            for var i = 1; i < r.numberOfRanges; i++ {
+            for i in 1 ..< r.numberOfRanges {
                 captureGroups.append(self.substringWithRange(self.range(r.rangeAtIndex(i))))
             }
             advance = self.substringWithRange(self.range(r.range)).characters.count
