@@ -17,11 +17,12 @@ func / (lhs :String, rhs :String) -> String {
     return lhs + "\n" + rhs
 }
 
-class ViewController: NSViewController, NSTextViewDelegate {
+class ViewController: NSViewController, NSTextViewDelegate, NSSplitViewDelegate {
     
     @IBOutlet var editableText :NSTextView!
     @IBOutlet var outputView: NSTextView!
     @IBOutlet weak var webView: WebView!
+    @IBOutlet weak var navigatorSplitView: NSSplitView!
     
     let template = Template(templateString: "<html><body>{{ body }}</body></html>")
     
@@ -74,6 +75,36 @@ class ViewController: NSViewController, NSTextViewDelegate {
     override var representedObject: AnyObject? {
         didSet {
             // Update the view, if already loaded.
+        }
+    }
+    
+    func splitView(splitView: NSSplitView, canCollapseSubview subview: NSView) -> Bool {
+        return subview === splitView.subviews.first
+    }
+    
+    func splitView(splitView: NSSplitView, constrainMinCoordinate proposedMinimumPosition: CGFloat, ofSubviewAt dividerIndex: Int) -> CGFloat {
+        return 100
+    }
+    
+    override func validateMenuItem(menuItem: NSMenuItem) -> Bool {
+        
+        if menuItem.title == "Show Navigator" || menuItem.title == "Hide Navigator" {
+            return true
+        }
+        
+        return super.validateMenuItem(menuItem)
+    }
+    
+    @IBAction func toggleNavigatorVisibility(sender :AnyObject) {
+        
+        let expandedWidth :CGFloat = 150
+        let navigatorDividerIndex = 0
+        let navigatorView = navigatorSplitView.subviews.first!
+        let splitView = navigatorSplitView
+        if splitView.isSubviewCollapsed(navigatorView) {
+            splitView.setPosition(expandedWidth, ofDividerAtIndex: navigatorDividerIndex)
+        } else {
+            splitView.setPosition(0, ofDividerAtIndex: navigatorDividerIndex)
         }
     }
 }
