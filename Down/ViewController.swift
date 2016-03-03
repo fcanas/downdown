@@ -17,6 +17,31 @@ func / (lhs :String, rhs :String) -> String {
     return lhs + "\n" + rhs
 }
 
+let objectThingy = "item?"
+let itemValue = "itemVluew"
+
+class ProjectOutlineDataSource : NSObject, NSOutlineViewDataSource {
+    
+    func outlineView(outlineView: NSOutlineView,
+        numberOfChildrenOfItem item: AnyObject?) -> Int {
+        return 3
+    }
+    
+    func outlineView(outlineView: NSOutlineView,
+        child index: Int,
+        ofItem item: AnyObject?) -> AnyObject {
+            return objectThingy
+    }
+    
+    func outlineView(outlineView: NSOutlineView, isItemExpandable item: AnyObject) -> Bool {
+        return true
+    }
+    
+    func outlineView(outlineView: NSOutlineView, objectValueForTableColumn tableColumn: NSTableColumn?, byItem item: AnyObject?) -> AnyObject? {
+        return itemValue
+    }
+}
+
 class ViewController: NSViewController, NSTextViewDelegate, NSSplitViewDelegate {
     
     @IBOutlet var editableText :NSTextView!
