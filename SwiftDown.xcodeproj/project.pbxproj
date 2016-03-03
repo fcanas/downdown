@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		E74464BA1C59B7E3000A82DD /* BlockElements.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74464B91C59B7E3000A82DD /* BlockElements.swift */; };
 		E74464BC1C59B824000A82DD /* HTMLGeneration.swift in Sources */ = {isa = PBXBuildFile; fileRef = E74464BB1C59B824000A82DD /* HTMLGeneration.swift */; };
+		E7B217C41C839CAE0000C3D7 /* Tempo.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B217C31C839CAE0000C3D7 /* Tempo.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E7B217CB1C839CAF0000C3D7 /* Tempo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B217C11C839CAE0000C3D7 /* Tempo.framework */; };
+		E7B217D21C839CAF0000C3D7 /* TempoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B217D11C839CAF0000C3D7 /* TempoTests.swift */; };
+		E7B217D61C839CAF0000C3D7 /* Tempo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B217C11C839CAE0000C3D7 /* Tempo.framework */; };
+		E7B217D71C839CAF0000C3D7 /* Tempo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = E7B217C11C839CAE0000C3D7 /* Tempo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		E7B217DF1C839CC90000C3D7 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B217DE1C839CC90000C3D7 /* Tempo.swift */; };
+		E7B217E11C83D43C0000C3D7 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B217E01C83D43C0000C3D7 /* URLExtensions.swift */; };
 		E7B226811C8295F600A5FE0A /* Stationary.h in Headers */ = {isa = PBXBuildFile; fileRef = E7B226801C8295F600A5FE0A /* Stationary.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E7B226881C8295F700A5FE0A /* Stationary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7B2267E1C8295F600A5FE0A /* Stationary.framework */; };
 		E7B2268F1C8295F700A5FE0A /* StationaryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7B2268E1C8295F700A5FE0A /* StationaryTests.swift */; };
@@ -32,6 +39,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		E7B217CC1C839CAF0000C3D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7C5B56B1C4D7E0300BEC3F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7B217C01C839CAE0000C3D7;
+			remoteInfo = Tempo;
+		};
+		E7B217CE1C839CAF0000C3D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7C5B56B1C4D7E0300BEC3F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7E97F621C585C9100A5692F;
+			remoteInfo = Down;
+		};
+		E7B217D41C839CAF0000C3D7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E7C5B56B1C4D7E0300BEC3F3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E7B217C01C839CAE0000C3D7;
+			remoteInfo = Tempo;
+		};
 		E7B226891C8295F700A5FE0A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = E7C5B56B1C4D7E0300BEC3F3 /* Project object */;
@@ -84,6 +112,7 @@
 			dstSubfolderSpec = 10;
 			files = (
 				E7B226941C8295F700A5FE0A /* Stationary.framework in Embed Frameworks */,
+				E7B217D71C839CAF0000C3D7 /* Tempo.framework in Embed Frameworks */,
 				E7E97F811C585F3000A5692F /* SwiftDown.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -94,6 +123,14 @@
 /* Begin PBXFileReference section */
 		E74464B91C59B7E3000A82DD /* BlockElements.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlockElements.swift; sourceTree = "<group>"; };
 		E74464BB1C59B824000A82DD /* HTMLGeneration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HTMLGeneration.swift; sourceTree = "<group>"; };
+		E7B217C11C839CAE0000C3D7 /* Tempo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Tempo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7B217C31C839CAE0000C3D7 /* Tempo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Tempo.h; sourceTree = "<group>"; };
+		E7B217C51C839CAE0000C3D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7B217CA1C839CAE0000C3D7 /* TempoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TempoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E7B217D11C839CAF0000C3D7 /* TempoTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoTests.swift; sourceTree = "<group>"; };
+		E7B217D31C839CAF0000C3D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E7B217DE1C839CC90000C3D7 /* Tempo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tempo.swift; sourceTree = "<group>"; };
+		E7B217E01C83D43C0000C3D7 /* URLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		E7B2267E1C8295F600A5FE0A /* Stationary.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Stationary.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7B226801C8295F600A5FE0A /* Stationary.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Stationary.h; sourceTree = "<group>"; };
 		E7B226821C8295F600A5FE0A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -123,6 +160,21 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		E7B217BD1C839CAE0000C3D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7B217C71C839CAE0000C3D7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7B217CB1C839CAF0000C3D7 /* Tempo.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B2267A1C8295F600A5FE0A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -158,6 +210,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7B226931C8295F700A5FE0A /* Stationary.framework in Frameworks */,
+				E7B217D61C839CAF0000C3D7 /* Tempo.framework in Frameworks */,
 				E7E97F801C585F3000A5692F /* SwiftDown.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -172,6 +225,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E7B217C21C839CAE0000C3D7 /* Tempo */ = {
+			isa = PBXGroup;
+			children = (
+				E7B217C31C839CAE0000C3D7 /* Tempo.h */,
+				E7B217C51C839CAE0000C3D7 /* Info.plist */,
+				E7B217DE1C839CC90000C3D7 /* Tempo.swift */,
+				E7B217E01C83D43C0000C3D7 /* URLExtensions.swift */,
+			);
+			path = Tempo;
+			sourceTree = "<group>";
+		};
+		E7B217D01C839CAF0000C3D7 /* TempoTests */ = {
+			isa = PBXGroup;
+			children = (
+				E7B217D11C839CAF0000C3D7 /* TempoTests.swift */,
+				E7B217D31C839CAF0000C3D7 /* Info.plist */,
+			);
+			path = TempoTests;
+			sourceTree = "<group>";
+		};
 		E7B2267F1C8295F600A5FE0A /* Stationary */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +273,8 @@
 				E7E97F761C585C9200A5692F /* DownTests */,
 				E7B2267F1C8295F600A5FE0A /* Stationary */,
 				E7B2268D1C8295F700A5FE0A /* StationaryTests */,
+				E7B217C21C839CAE0000C3D7 /* Tempo */,
+				E7B217D01C839CAF0000C3D7 /* TempoTests */,
 				E7C5B5751C4D7E0300BEC3F3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -213,6 +288,8 @@
 				E7E97F731C585C9200A5692F /* DownTests.xctest */,
 				E7B2267E1C8295F600A5FE0A /* Stationary.framework */,
 				E7B226871C8295F700A5FE0A /* StationaryTests.xctest */,
+				E7B217C11C839CAE0000C3D7 /* Tempo.framework */,
+				E7B217CA1C839CAE0000C3D7 /* TempoTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -265,6 +342,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		E7B217BE1C839CAE0000C3D7 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7B217C41C839CAE0000C3D7 /* Tempo.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B2267B1C8295F600A5FE0A /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -284,6 +369,43 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		E7B217C01C839CAE0000C3D7 /* Tempo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7B217DC1C839CAF0000C3D7 /* Build configuration list for PBXNativeTarget "Tempo" */;
+			buildPhases = (
+				E7B217BC1C839CAE0000C3D7 /* Sources */,
+				E7B217BD1C839CAE0000C3D7 /* Frameworks */,
+				E7B217BE1C839CAE0000C3D7 /* Headers */,
+				E7B217BF1C839CAE0000C3D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Tempo;
+			productName = Tempo;
+			productReference = E7B217C11C839CAE0000C3D7 /* Tempo.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		E7B217C91C839CAE0000C3D7 /* TempoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E7B217DD1C839CAF0000C3D7 /* Build configuration list for PBXNativeTarget "TempoTests" */;
+			buildPhases = (
+				E7B217C61C839CAE0000C3D7 /* Sources */,
+				E7B217C71C839CAE0000C3D7 /* Frameworks */,
+				E7B217C81C839CAE0000C3D7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E7B217CD1C839CAF0000C3D7 /* PBXTargetDependency */,
+				E7B217CF1C839CAF0000C3D7 /* PBXTargetDependency */,
+			);
+			name = TempoTests;
+			productName = TempoTests;
+			productReference = E7B217CA1C839CAE0000C3D7 /* TempoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		E7B2267D1C8295F600A5FE0A /* Stationary */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E7B226991C8295F700A5FE0A /* Build configuration list for PBXNativeTarget "Stationary" */;
@@ -371,6 +493,7 @@
 			dependencies = (
 				E7E97F831C585F3000A5692F /* PBXTargetDependency */,
 				E7B226921C8295F700A5FE0A /* PBXTargetDependency */,
+				E7B217D51C839CAF0000C3D7 /* PBXTargetDependency */,
 			);
 			name = Down;
 			productName = Down;
@@ -405,6 +528,12 @@
 				LastUpgradeCheck = 0720;
 				ORGANIZATIONNAME = "Fabián Cañas";
 				TargetAttributes = {
+					E7B217C01C839CAE0000C3D7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
+					E7B217C91C839CAE0000C3D7 = {
+						CreatedOnToolsVersion = 7.3;
+					};
 					E7B2267D1C8295F600A5FE0A = {
 						CreatedOnToolsVersion = 7.3;
 					};
@@ -445,11 +574,27 @@
 				E7E97F721C585C9200A5692F /* DownTests */,
 				E7B2267D1C8295F600A5FE0A /* Stationary */,
 				E7B226861C8295F700A5FE0A /* StationaryTests */,
+				E7B217C01C839CAE0000C3D7 /* Tempo */,
+				E7B217C91C839CAE0000C3D7 /* TempoTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		E7B217BF1C839CAE0000C3D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7B217C81C839CAE0000C3D7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B2267C1C8295F600A5FE0A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -497,6 +642,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		E7B217BC1C839CAE0000C3D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7B217DF1C839CC90000C3D7 /* Tempo.swift in Sources */,
+				E7B217E11C83D43C0000C3D7 /* URLExtensions.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E7B217C61C839CAE0000C3D7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E7B217D21C839CAF0000C3D7 /* TempoTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E7B226791C8295F600A5FE0A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -554,6 +716,21 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		E7B217CD1C839CAF0000C3D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7B217C01C839CAE0000C3D7 /* Tempo */;
+			targetProxy = E7B217CC1C839CAF0000C3D7 /* PBXContainerItemProxy */;
+		};
+		E7B217CF1C839CAF0000C3D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7E97F621C585C9100A5692F /* Down */;
+			targetProxy = E7B217CE1C839CAF0000C3D7 /* PBXContainerItemProxy */;
+		};
+		E7B217D51C839CAF0000C3D7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E7B217C01C839CAE0000C3D7 /* Tempo */;
+			targetProxy = E7B217D41C839CAF0000C3D7 /* PBXContainerItemProxy */;
+		};
 		E7B2268A1C8295F700A5FE0A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = E7B2267D1C8295F600A5FE0A /* Stationary */;
@@ -598,6 +775,71 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		E7B217D81C839CAF0000C3D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Tempo/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabiancanas.Tempo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E7B217D91C839CAF0000C3D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_VERSION = A;
+				INFOPLIST_FILE = Tempo/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabiancanas.Tempo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		E7B217DA1C839CAF0000C3D7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TempoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabiancanas.TempoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E7B217DB1C839CAF0000C3D7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NONNULL = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TempoTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.fabiancanas.TempoTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		E7B226951C8295F700A5FE0A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -865,6 +1107,22 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		E7B217DC1C839CAF0000C3D7 /* Build configuration list for PBXNativeTarget "Tempo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7B217D81C839CAF0000C3D7 /* Debug */,
+				E7B217D91C839CAF0000C3D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E7B217DD1C839CAF0000C3D7 /* Build configuration list for PBXNativeTarget "TempoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E7B217DA1C839CAF0000C3D7 /* Debug */,
+				E7B217DB1C839CAF0000C3D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		E7B226991C8295F700A5FE0A /* Build configuration list for PBXNativeTarget "Stationary" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -872,6 +1130,7 @@
 				E7B226961C8295F700A5FE0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7B2269A1C8295F700A5FE0A /* Build configuration list for PBXNativeTarget "StationaryTests" */ = {
 			isa = XCConfigurationList;
@@ -880,6 +1139,7 @@
 				E7B226981C8295F700A5FE0A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E7C5B56E1C4D7E0300BEC3F3 /* Build configuration list for PBXProject "SwiftDown" */ = {
 			isa = XCConfigurationList;

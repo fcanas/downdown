@@ -59,6 +59,16 @@
                ReferencedContainer = "container:SwiftDown.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E7B217C91C839CAE0000C3D7"
+               BuildableName = "TempoTests.xctest"
+               BlueprintName = "TempoTests"
+               ReferencedContainer = "container:SwiftDown.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
