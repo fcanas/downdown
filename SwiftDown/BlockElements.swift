@@ -31,7 +31,7 @@ func blocks(input :String) -> [BlockElement] {
 }
 
 func paragraph(input :String) -> (BlockElement?, String) {
-    let (captures, advance) = input.capture(RegEx("\\A(.+?)(\n\\s*\n)", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]), once: true)
+    let (captures, advance) = input.capture(RegEx("\\A(.+?)((\n\\s*\n)+|\\z)", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]), once: true)
     guard let p = captures.first?.first else {
         return (nil, input)
     }

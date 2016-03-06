@@ -137,6 +137,11 @@ class Paragraph: XCTestCase {
         XCTAssertEqual(remainder, "And this is\nanother paragraph\nthat shoudn't\nbe parsed.\n\n")
     }
     
+    func testAtEndOfFile() {
+        let (p, _) = paragraph("This is just a line.")
+        XCTAssertEqual(p.map(html)!, "<p>This is just a line.</p>")
+    }
+    
 }
 
 class BlockquoteTests: XCTestCase {
