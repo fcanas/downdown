@@ -200,7 +200,17 @@ class BlockquoteTests: XCTestCase {
 class ListTests: XCTestCase {
     func testList() {
         let (p, _) = list("* This is\n* a list\n* with *formatting*.\n\n")
-        XCTAssertEqual(p.map(html)!, "<ul><li>This is</li><li>a list</li><li>with <em>formatting</em>.</li></ul>")
+        XCTAssertEqual(p.map(html), "<ul><li>This is</li><li>a list</li><li>with <em>formatting</em>.</li></ul>")
+    }
+    
+    func testListWithPlus() {
+        let (p, _) = list("+ This is\n+ a list\n+ with *formatting*.\n\n")
+        XCTAssertEqual(p.map(html), "<ul><li>This is</li><li>a list</li><li>with <em>formatting</em>.</li></ul>")
+    }
+    
+    func testListWithHyphen() {
+        let (p, _) = list("- This is\n- a list\n- with *formatting*.\n\n")
+        XCTAssertEqual(p.map(html), "<ul><li>This is</li><li>a list</li><li>with <em>formatting</em>.</li></ul>")
     }
 }
 

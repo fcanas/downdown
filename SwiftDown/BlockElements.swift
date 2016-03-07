@@ -59,11 +59,11 @@ func blockQuote(input :String) -> (BlockElement?, String) {
 }
 
 func list(input :String) -> (BlockElement?, String) {
-    let (captures, advance) = input.capture(RegEx("^\\* (.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
+    let (captures, advance) = input.capture(RegEx("^(?:\\*|\\+|-) (.*?)\n\\s*\n", options: [.DotMatchesLineSeparators, .AnchorsMatchLines]))
     guard captures.count > 0 else {
         return (nil, input)
     }
-    let strippedBullets = captures.first!.first!.replace(RegEx("^ *\\* ?", options: [.AnchorsMatchLines]), template: "")
+    let strippedBullets = captures.first!.first!.replace(RegEx("^ *(?:\\*|\\+|-) ?", options: [.AnchorsMatchLines]), template: "")
     let listItems = lines(strippedBullets).map({ return Either<BlockElement, Line>.B($0) })
     return (.List(.Unordered, listItems), input.substringFromIndex(input.startIndex.advancedBy(advance)))
 }
